@@ -37,13 +37,13 @@ def explore_fund_master(fund_master_df):
             print(f"\nUnique Sub-Categories: {fund_master_df['sub_category'].nunique()}")
             print(fund_master_df['sub_category'].unique())
         
-        if 'risk_grade' in fund_master_df.columns:
-            print(f"\nUnique Risk Grades: {fund_master_df['risk_grade'].nunique()}")
-            print(fund_master_df['risk_grade'].unique())
+        if 'risk_category' in fund_master_df.columns:
+            print(f"\nUnique Risk Categories: {fund_master_df['risk_category'].nunique()}")
+            print(fund_master_df['risk_category'].unique())
         
-        if 'scheme_code' in fund_master_df.columns:
+        if 'amfi_code' in fund_master_df.columns:
             print(f"\nAMFI Scheme Code Structure Preview:")
-            print(fund_master_df['scheme_code'].head(10))
+            print(fund_master_df['amfi_code'].head(10))
 
 def validate_amfi_codes(fund_master_df, nav_history_df):
     if fund_master_df is not None and nav_history_df is not None:
@@ -51,9 +51,9 @@ def validate_amfi_codes(fund_master_df, nav_history_df):
         print("AMFI Code Validation")
         print(f"{'='*50}")
         
-        if 'scheme_code' in fund_master_df.columns and 'scheme_code' in nav_history_df.columns:
-            fm_codes = set(fund_master_df['scheme_code'].dropna())
-            nh_codes = set(nav_history_df['scheme_code'].dropna())
+        if 'amfi_code' in fund_master_df.columns and 'amfi_code' in nav_history_df.columns:
+            fm_codes = set(fund_master_df['amfi_code'].dropna())
+            nh_codes = set(nav_history_df['amfi_code'].dropna())
             
             missing_in_nh = fm_codes - nh_codes
             print(f"\nTotal codes in Fund Master: {len(fm_codes)}")
